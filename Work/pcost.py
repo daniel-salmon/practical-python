@@ -9,7 +9,7 @@ def portfolio_cost(filename):
     total = 0.0
     portfolio = report.read_portfolio(filename)
     for stock in portfolio:
-        total += stock.cost()
+        total += stock.cost
     return total
 
 def main(argv):
