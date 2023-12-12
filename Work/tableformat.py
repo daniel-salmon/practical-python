@@ -19,11 +19,11 @@ class TextTableFormatter(TableFormatter):
     Emit a table in plain-text format.
     '''
     def headings(self, headers):
-        print(' '.join(f'{h:>10s}' for h in headers))
+        print(' '.join(f'{str(h):>10s}' for h in headers))
         print(' '.join(['-' * 10] * len(headers)))
 
     def row(self, rowdata):
-        print(' '.join(f'{r:>10s}' for r in rowdata))
+        print(' '.join(f'{str(r):>10s}' for r in rowdata))
 
 
 class CSVTableFormatter(TableFormatter):
@@ -31,10 +31,10 @@ class CSVTableFormatter(TableFormatter):
     Emit a table in CSV format.
     '''
     def headings(self, headers):
-        print(','.join(headers))
+        print(','.join(str(h) for h in headers))
 
     def row(self, rowdata):
-        print(','.join(rowdata))
+        print(','.join(str(r) for r in rowdata))
 
 
 class HTMLTableFormatter(TableFormatter):
@@ -42,10 +42,10 @@ class HTMLTableFormatter(TableFormatter):
     Emit a table in HTML format.
     '''
     def headings(self, headers):
-        print('<tr><th>' + '</th><th>'.join(headers) + '</th></tr>')
+        print('<tr><th>' + '</th><th>'.join(str(h) for h in headers) + '</th></tr>')
 
     def row(self, rowdata):
-        print('<tr><td>' + '</td><td>'.join(rowdata) + '</td></tr>')
+        print('<tr><td>' + '</td><td>'.join(str(r) for r in rowdata) + '</td></tr>')
 
 
 def create_formatter(fmt):
@@ -57,3 +57,12 @@ def create_formatter(fmt):
         return HTMLTableFormatter()
     else:
         raise RuntimeError(f'Unknown format {fmt}')
+
+
+def print_table(rows, columns, formatter):
+    '''
+    Outputs a table with the given columns using a list of objects.
+    '''
+    formatter.headings(columns)
+    for obj in rows:
+        formatter.row(getattr(obj, attr) for attr in columns)
