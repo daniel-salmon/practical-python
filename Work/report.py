@@ -2,9 +2,9 @@
 # report.py
 #
 # Exercise 2.4
-import csv
 import tableformat
 from fileparse import parse_csv
+from portfolio import Portfolio
 from stock import Stock
 
 def read_portfolio(filename):
@@ -14,7 +14,7 @@ def read_portfolio(filename):
     with open(filename, 'rt') as f:
         lines = f.read().split('\n')
     portfolio = [Stock(**s) for s in parse_csv(lines, types=[str, int, float])]
-    return portfolio
+    return Portfolio(portfolio)
 
 def read_prices(filename):
     '''

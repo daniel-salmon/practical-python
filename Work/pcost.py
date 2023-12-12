@@ -3,14 +3,13 @@
 #
 # Exercise 1.27
 
-import report
+from report import read_portfolio
 
 def portfolio_cost(filename):
-    total = 0.0
-    portfolio = report.read_portfolio(filename)
-    for stock in portfolio:
-        total += stock.cost
-    return total
+    '''
+    Computes the total cost of a portfolio.
+    '''
+    return read_portfolio(filename).total_cost
 
 def main(argv):
     if len(argv) > 2:
