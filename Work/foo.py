@@ -47,3 +47,26 @@ class Bike:
 
 class LoudBike(Loud, Bike):
     pass
+
+
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+def filematch(filename, substr):
+    with open(filename, 'r') as f:
+        for line in f:
+            if substr in line:
+                yield line
+
+if __name__ == '__main__':
+    c = countdown(10)
+    while True:
+        try:
+            x = c.__next__()
+            print(x)
+        except StopIteration as e:
+            print('all done')
+            break
+    print("i'm out of there")
