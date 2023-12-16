@@ -33,7 +33,7 @@ def ticker(portfile, logfile, fmt):
     portfolio = read_portfolio(portfile)
     lines = follow(logfile)
     rows = parse_stock_data(lines)
-    rows = filter_symbols(rows, portfolio)
+    rows = (row for row in rows if row['name'] in portfolio)
     formatter = create_formatter(fmt)
     formatter.headings(['Name', 'Price', 'Change'])
     for row in rows:
