@@ -7,13 +7,13 @@ from fileparse import parse_csv
 from portfolio import Portfolio
 from stock import Stock
 
-def read_portfolio(filename):
+def read_portfolio(filename, **opts):
     '''
     Reads the file and returns the portfolio data as a list of Stocks.
     '''
-    with open(filename, 'rt') as f:
-        lines = f.read().split('\n')
-    portfolio = [Stock(**s) for s in parse_csv(lines, types=[str, int, float])]
+    with open(filename, 'rt') as lines:
+        portdicts = parse_csv(lines, types=[str, int, float], **opts)
+    portfolio = [Stock(**s) for s in portdicts] 
     return Portfolio(portfolio)
 
 def read_prices(filename):
