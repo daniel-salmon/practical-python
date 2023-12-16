@@ -5,6 +5,9 @@ class Portfolio:
     def __init__(self, holdings):
         self._holdings = holdings
 
+    def __repr__(self):
+        return self._holdings.__repr__()
+
     def __iter__(self):
         return self._holdings.__iter__()
 
@@ -16,6 +19,9 @@ class Portfolio:
 
     def __contains__(self, name):
         return any(s.name == name for s in self._holdings)
+
+    def sort(self, key=lambda s: getattr(s, 'name'), reverse=False):
+        self._holdings.sort(key=key, reverse=reverse)
 
     @property
     def total_cost(self):

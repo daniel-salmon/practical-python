@@ -10,6 +10,10 @@ class Stock:
         return f"Stock('{self.name}', {self.shares}, {self.price})"
 
     @property
+    def __dict__(self):
+        return {k: self.__getattribute__(k) for k in self.__slots__}
+
+    @property
     def shares(self):
         return self._shares
 
