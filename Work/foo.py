@@ -1,5 +1,7 @@
 # foo.py
 
+from typedproperty import String, Integer, Float
+
 x = 42
 def bar():
     pass
@@ -59,6 +61,16 @@ def filematch(filename, substr):
         for line in f:
             if substr in line:
                 yield line
+
+class Stock:
+    name = String('name')
+    shares = Integer('shares')
+    price = Float('price')
+
+    def __init__(self, name, shares, price):
+        self.name = name
+        self.shares = shares
+        self.price = price
 
 if __name__ == '__main__':
     c = countdown(10)
