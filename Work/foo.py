@@ -72,6 +72,16 @@ class Stock:
         self.shares = shares
         self.price = price
 
+def logged(func):
+    def wrapped(*args, **kwargs):
+        print('Calling', func.__name__)
+        return func(*args, **kwargs)
+    return wrapped
+
+@logged
+def add(x, y):
+    return x + y
+
 if __name__ == '__main__':
     c = countdown(10)
     while True:
