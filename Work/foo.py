@@ -82,6 +82,27 @@ def logged(func):
 def add(x, y):
     return x + y
 
+class Foo(object):
+    @staticmethod
+    def bar(x):
+        print('x =', x)
+
+    @classmethod
+    def spam(cls):
+        print(cls)
+
+class Date:
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+
+    @classmethod
+    def today(cls):
+        import time
+        tm = time.localtime()
+        return cls(tm.tm_year, tm.tm_mon, tm.tm_mday)
+
 if __name__ == '__main__':
     c = countdown(10)
     while True:

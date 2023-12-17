@@ -12,9 +12,8 @@ def read_portfolio(filename, **opts):
     Reads the file and returns the portfolio data as a list of Stocks.
     '''
     with open(filename, 'rt') as lines:
-        portdicts = parse_csv(lines, types=[str, int, float], **opts)
-    portfolio = [Stock(**s) for s in portdicts] 
-    return Portfolio(portfolio)
+        portfolio = Portfolio.from_csv(lines, **opts)
+    return portfolio
 
 def read_prices(filename):
     '''
