@@ -7,6 +7,13 @@ from fileparse import parse_csv
 from portfolio import Portfolio
 from stock import Stock
 
+import logging
+logging.basicConfig(
+    filename = 'app.log',
+    filemode = 'w',
+    level = logging.WARNING,
+)
+
 def read_portfolio(filename, **opts):
     '''
     Reads the file and returns the portfolio data as a list of Stocks.
