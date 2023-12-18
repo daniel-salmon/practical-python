@@ -2,10 +2,10 @@
 # report.py
 #
 # Exercise 2.4
-import tableformat
-from fileparse import parse_csv
-from portfolio import Portfolio
-from stock import Stock
+from . import tableformat
+from .fileparse import parse_csv
+from .portfolio import Portfolio
+from .stock import Stock
 
 import logging
 logging.basicConfig(

@@ -1,6 +1,6 @@
 # portfolio.py
 
-from stock import Stock
+from .stock import Stock
 
 class Portfolio:
 
@@ -43,7 +43,7 @@ class Portfolio:
 
     @classmethod
     def from_csv(cls, lines, **opts):
-        from fileparse import parse_csv
+        from .fileparse import parse_csv
         self = cls()
         portdicts = parse_csv(
             lines,

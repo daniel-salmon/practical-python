@@ -1,6 +1,6 @@
 # tableformat.py
 
-from exceptions import FormatError
+from .exceptions import FormatError
 
 class TableFormatter:
     def headings(self, headers):

@@ -13,9 +13,9 @@ def follow(filename):
         yield line
 
 if __name__ == '__main__':
-    import report
+    from .report import read_portfolio
 
-    portfolio = report.read_portfolio('Data/portfolio.csv')
+    portfolio = read_portfolio('Data/portfolio.csv')
 
     for line in follow('Data/stocklog.csv'):
         fields = line.split(',')

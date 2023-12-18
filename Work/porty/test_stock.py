@@ -1,7 +1,7 @@
 # test_stock.py
 
 import unittest
-import stock
+from . import stock
 
 s = stock.Stock('GOOG', 100, 490.1)
 
